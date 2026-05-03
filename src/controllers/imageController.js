@@ -31,6 +31,7 @@ async function uploadImage(req, res) {
       crop: "fill",
       quality: "auto",
       fetch_format: "auto",
+      secure: true,
     });
 
     const imageId = uuidv4();
