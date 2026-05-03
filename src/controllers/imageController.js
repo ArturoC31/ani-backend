@@ -26,6 +26,7 @@ async function uploadImage(req, res) {
       );
       stream.end(req.file.buffer);
     });
+
     const thumbUrl = cloudinary.url(uploadResult.public_id, {
       width: 300,
       height: 300,
