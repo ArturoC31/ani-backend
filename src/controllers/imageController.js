@@ -12,10 +12,6 @@ async function uploadImage(req, res) {
       const stream = cloudinary.uploader.upload_stream(
         {
           folder: `ani-gallery/${req.user.id}`,
-          transformation: [
-            { quality: "auto", fetch_format: "auto" },
-            { width: 2048, height: 2048, crop: "limit" },
-          ],
         },
         (error, result) => {
           if (error) reject(error);
