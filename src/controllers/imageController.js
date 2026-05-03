@@ -8,6 +8,12 @@ async function uploadImage(req, res) {
   }
 
   try {
+    console.log(
+      "Cloudinary config:",
+      process.env.CLOUDINARY_CLOUD_NAME,
+      process.env.CLOUDINARY_API_KEY,
+    );
+
     const uploadResult = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
@@ -20,7 +26,6 @@ async function uploadImage(req, res) {
       );
       stream.end(req.file.buffer);
     });
-
     const thumbUrl = cloudinary.url(uploadResult.public_id, {
       width: 300,
       height: 300,
